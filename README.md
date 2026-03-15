@@ -15,6 +15,7 @@ needle_angle_min=225
 needle_angle_max=510
 speedometer_x=0.90
 speedometer_y=0.80
+max_speed=140
 fade_speed = 2.5
 ```
 Any missing values will be inherited from the default values.
