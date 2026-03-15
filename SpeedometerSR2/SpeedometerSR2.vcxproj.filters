@@ -62,5 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="H:\SteamLibrary\steamapps\common\Saints Row 2\scripts\textures\speedometer.ini">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

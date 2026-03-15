@@ -167,6 +167,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="H:\SteamLibrary\steamapps\common\Saints Row 2\scripts\textures\speedometer.ini" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
