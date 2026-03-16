@@ -8,6 +8,9 @@
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
+extern ID3DXFont* gFont;
+extern ID3DXSprite* gSprite;
+
 struct SpeedometerConfig {
     float needlePivotX = 7.0f;
     float needlePivotY = 95.0f;
@@ -17,6 +20,7 @@ struct SpeedometerConfig {
     float screenXPct = 0.78f;  // percentage of screen width
     float screenYPct = 0.85f;  // percentage of screen height
     float fade_speed = 2.0f;
+    float debug = 0;
 };
 
 static bool IsHudHidden() {
@@ -93,6 +97,7 @@ static void LoadConfig(const std::string& basePath) {
         else if (key == "speedometer_x") cfg.screenXPct = v;
         else if (key == "speedometer_y") cfg.screenYPct = v;
         else if (key == "fade_speed") cfg.fade_speed = v;
+		else if (key == "debug") cfg.debug = v;
     }
 
     // Save last section
@@ -300,4 +305,11 @@ static void DrawSpeedometer(IDirect3DDevice9* dev, ID3DXSprite* sprite) {
     sprite->Begin(D3DXSPRITE_ALPHABLEND);
     sprite->SetTransform(&identity);
     sprite->End();
+
+    if (cfg.debug == 1 && gFont) {
+        char debugBuf[64] = {};
+        sprintf_s(debugBuf, "%.1f mph  scale=%.3f", spd.speedMph, scale);
+        RECT rc = { screenX - 100, screenY + 50, screenX + 100, screenY + 80 };
+        gFont->DrawTextA(nullptr, debugBuf, -1, &rc, DT_CENTER, 0xFFFF0000);
+    }
 }
